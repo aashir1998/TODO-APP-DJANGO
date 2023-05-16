@@ -1,0 +1,44 @@
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+/>
+
+<style>
+  body {
+    background-color: #638cb8;
+  }
+
+  input {
+    width: 10%;
+    padding: 2px 10px;
+    margin: 1px 0;
+    box-sizing: border-box;
+  }
+
+  input::placeholder {
+    color: #d3d3d3;
+  }
+
+  .submit {
+    background-color: #6ba3e8;
+  }
+
+  .center-column {
+    width: 400px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+  }
+</style>
+<div class="center-column">
+  <p>Are you sure you want to delete "{{ task }}"?</p>
+  <form action="{% url 'delete' task.id %}" method="POST">
+    {% csrf_token %}
+    <input class="btn btn-sm btn-info" type="submit" value="Yes" />
+    <a class="btn btn-sm btn-info" href="{% url 'list' %}">No</a>
+  </form>
+</div>
